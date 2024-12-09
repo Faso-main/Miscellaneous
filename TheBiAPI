@@ -1,0 +1,25 @@
+import requests
+import json
+
+url = "https://api.theb.ai/v1/chat/completions"
+# url = "https://api.baizhi.ai/v1/chat/completions"
+
+payload = json.dumps({
+  "model": "llama-1.5-7-chat",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, World!"
+    }
+  ],
+  "stream": False
+})
+headers = {
+  'Authorization': 'Bearer sk-7PHX4lYaGpOB2ORchYzKVGhlQi5BSQSSa0HzzQxZN41nibqJ',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.json())
+
